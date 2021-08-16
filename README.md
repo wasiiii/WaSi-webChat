@@ -48,9 +48,9 @@
 ```
 $ docker network create wasinet
 ```
-1. Golang：
+1. Golang：最后跑
 ```shell
-docker run -d --net=wasinet -v ccr.ccs.tencentyun.com/wasidockerdemo/go -p 9000:9000
+docker run -it --net=wasinet -p 9000:9000 ccr.ccs.tencentyun.com/wasidockerdemo/go
 ```
 2. PostreSQL(要使用init.sql初始化数据库)：
 ```Dockerfile
