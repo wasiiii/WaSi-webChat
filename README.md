@@ -50,7 +50,7 @@ $ docker network create wasinet
 ```
 1. Golang：
 ```shell
-$ sudo docker run --rm -it -v $PWD:/go golang:alpine go build main.go -p 9000:9000 --network wasinet
+docker run -d --net=wasinet -v ccr.ccs.tencentyun.com/wasidockerdemo/go -p 9000:9000
 ```
 2. PostreSQL(要使用init.sql初始化数据库)：
 ```Dockerfile
@@ -62,7 +62,7 @@ ADD init.sql /docker-entrypoint-initdb.d
 ```shell
 $ docker build -t myimages:postgres .
 
-$ docker run -d -p 5432:5432 --name=wasipg myimages:postgres --network wasinet
+docker run -d --net=wasinet -p 5432:5432 --name=wasipg ccr.ccs.tencentyun.com/wasidockerdemo/postgres
 ```
 3. Angular：
 ```Dockerfile
@@ -81,7 +81,7 @@ $ ng build --prod
 进入dist文件夹，把Dockerfile放进去
 $ docker build -t myimages:angular .
 
-$ docker run -d --name demo1 -p 4200:4200 myimages:angular --network wasinet
+$ docker run -d  --net=wasinet --name=wasiangular -p 4200:4200 ccr.ccs.tencentyun.com/wasidockerdemo/angular
 ```
 4. 注意run的时候要放在同一个net下
 
